@@ -1,5 +1,6 @@
 package GUI;
 
+import Entities.Pokemon;
 import GUI.Logic.HotArea;
 import GUI.Logic.Player;
 import GUI.Logic.Resources;
@@ -23,6 +24,7 @@ public class Route1 extends JPanel implements KeyListener, MouseListener {//tile
     HotArea[][] tileset;
     private Scanner file = null;
     public int collide = 0;
+   Pokemon pokemon=new Pokemon();
     Route1(Frame pframe) {
 
         this.addKeyListener(this);
@@ -42,11 +44,12 @@ public class Route1 extends JPanel implements KeyListener, MouseListener {//tile
         p1.y = 240;
         p1.sprite = Resources.getImage("/gui/Images/Sprite.png");
         frame = pframe;
+        pokemon=frame.getPokemonById(0);
         this.setSize(frame.width, frame.height);
         this.setLocation(0, 0);
         p1.sotto();
        this.scratch("prova.txt", tileset  );
-
+        System.out.println("l'id e' :"+pokemon.id+" il nome e':"+pokemon.name);
     }
 
     @Override
@@ -73,6 +76,10 @@ public class Route1 extends JPanel implements KeyListener, MouseListener {//tile
     public void keyTyped(KeyEvent e) {
 
     }
+    public void grassMovement(){
+        if (p1.playerInTheGrass()) System.out.println("Encounter");
+        else System.out.println("not Encounter");
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -88,8 +95,7 @@ public class Route1 extends JPanel implements KeyListener, MouseListener {//tile
 
                     break;
                 case 2:
-                    if (p1.playerInTheGrass()) System.out.println("Encounter");
-                    else System.out.println("not Encounter");
+                    grassMovement();
 
                 default:
                     p1.sinistra();
