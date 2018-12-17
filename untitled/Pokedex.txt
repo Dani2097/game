@@ -1,0 +1,9 @@
+id 0
+nameLenght 9
+name bulbasaur
+captureRate 45
+experienceGrowth 100
+type 0
+moveset 1 2 3 4
+sprite 0
+baseStats 45 49 49 65 65 45 
