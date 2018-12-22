@@ -1,14 +1,18 @@
-package GUI.Logic;
+package Entities;
 
+import GUI.Logic.HotArea;
+
+import javax.swing.*;
+import java.awt.event.KeyEvent;
 import java.util.Random;
 
 public class Player extends HotArea {
     int speed = 20;
     public int py, width = 80;
     public int px, height = 80;
-
+    Pokemon[] pokemonTeam;
     public Player() {
-
+        pokemonTeam=new Pokemon[6];
         calcolapxpy();
     }
 
@@ -18,19 +22,19 @@ public class Player extends HotArea {
         calcolapxpy();
 
 
-        System.out.println("griglia " + px + ";" + py);
+
     }
 
     public void sopra() {y -= speed;
         calcolapxpy();
-         System.out.println("griglia " + px + ";" + py);
+
     }
 
     public void sinistra() {
 
         x -= speed;
         calcolapxpy();
-        System.out.println("griglia " + px + ";" + py);
+
     }
 
     public void destra() {
@@ -38,7 +42,7 @@ public class Player extends HotArea {
 
 
         calcolapxpy();
-        System.out.println("griglia " + px + ";" + py);
+
     }
     public void calcolapxpy(){
         px = (int) (x + 60) / 20;
@@ -51,4 +55,5 @@ public class Player extends HotArea {
       return(r.nextInt()%2==0)&&(r.nextInt()%2==0);
 
    }
+
 }

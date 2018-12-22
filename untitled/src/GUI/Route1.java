@@ -2,7 +2,7 @@ package GUI;
 
 import Entities.Pokemon;
 import GUI.Logic.HotArea;
-import GUI.Logic.Player;
+import Entities.Player;
 import GUI.Logic.Resources;
 
 import javax.swing.*;
@@ -14,23 +14,33 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Route1 extends JPanel implements KeyListener, MouseListener {//tile 1,13;1,14
     Frame frame;
-    public int c = 0, l = 0,prova, misura=48;
+    public int c = 0, l = 0,prova, misura=48,pokemonR1=3;
+    private int[] id,levelR1;
     Image bg = Resources.getImage("/gui/Images/Route1.1.png"),tettoMK=Resources.getImage("/gui/Images/tettoMarket.png"),bassomk=Resources.getImage("/gui/Images/BassoMarket.png");
     Player p1 = new Player();
     HotArea[][] tileset;
     private Scanner file = null;
     public int collide = 0;
-   Pokemon pokemon=new Pokemon();
+   Pokemon pokemon;
     Route1(Frame pframe) {
 
         this.addKeyListener(this);
         this.addMouseListener(this);
         tileset = new HotArea[misura][misura];
 
+id=new int[pokemonR1];
+id[0]=0;
+id[1]=1;
+id[2]=2;
+levelR1=new int[5];
+levelR1[0]=2;
+levelR1[1]=1;
+levelR1[2]=3;
         prova = (int) 3 / 2;
         System.out.println("" + prova);
         for (int i = 0; i < misura; i++) {
@@ -57,17 +67,18 @@ public class Route1 extends JPanel implements KeyListener, MouseListener {//tile
         g.drawImage(bg, 0, 0, frame.height, frame.width, null); g.drawImage(bassomk, 573, 131+123, 190, 123, null);
         g.drawImage(p1.sprite, p1.x, p1.y, p1.x + p1.width, p1.y + p1.width, c * 64, l * 64, 64 * (c + 1), 64 * (l + 1), null);
         g.drawImage(tettoMK, 573, 131, 190, 123, null);
-
+//        g.drawImage(boh,200,200,400,400,null);
         for (int i = 0; i < misura; i++) {
             for (int j = 0; j < misura; j++) {
 
-//                tileset[i][j].paintID(g);
+                tileset[i][j].paintID(g);
 
             }
         }
 
-//        for (int i = 0; i < frame.width / 20; i++) g.drawLine(0, 20 * i, frame.width, 20 * i);
-//      for (int i = 0; i < frame.width / 20; i++) g.drawLine(20 * i, 0, 20 * i, frame.height);
+      for (int i = 0; i < frame.width / 20; i++) g.drawLine(0, 20 * i, frame.width, 20 * i);
+
+     for (int i = 0; i < frame.width / 20; i++) g.drawLine(20 * i, 0, 20 * i, frame.height);
 
 
     }
@@ -76,15 +87,23 @@ public class Route1 extends JPanel implements KeyListener, MouseListener {//tile
     public void keyTyped(KeyEvent e) {
 
     }
-    public void grassMovement(){
-        if (p1.playerInTheGrass()) System.out.println("Encounter");
-        else System.out.println("not Encounter");
+
+    public void grassMovement() {
+        if (p1.playerInTheGrass()) {
+            Random r = new Random();
+            pokemon = frame.getPokemonById(id[r.nextInt(pokemonR1)]);
+            pokemon.level=levelR1[r.nextInt(3)];
+            System.out.println("Encounter"+pokemon.sprite);
+            frame.ec.P = this.pokemon;
+            frame.ec.repaint();
+            frame.switchPanel(frame.ec, frame.r1);
+        } else System.out.println("not Encounter");
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-
+if(key==KeyEvent.VK_ESCAPE)frame.switchPanel(frame.menu,this);
         if (key == KeyEvent.VK_LEFT) {
             //System.out.println("sinistra" + c + l);
             c++;
@@ -113,8 +132,7 @@ public class Route1 extends JPanel implements KeyListener, MouseListener {//tile
 
                     break;
                 case 2:
-                    if (p1.playerInTheGrass()) System.out.println("Encounter");
-                    else System.out.println("not Encounter");
+                    grassMovement();
 
                 default:
                     p1.destra();
@@ -131,8 +149,7 @@ public class Route1 extends JPanel implements KeyListener, MouseListener {//tile
 
                     break;
                 case 2:
-                    if (p1.playerInTheGrass()) System.out.println("Encounter");
-                    else System.out.println("not Encounter");
+                    grassMovement();
 
                 default:
                     p1.sopra();
@@ -149,8 +166,7 @@ public class Route1 extends JPanel implements KeyListener, MouseListener {//tile
 
                     break;
                 case 2:
-                    if (p1.playerInTheGrass()) System.out.println("Encounter");
-                    else System.out.println("not Encounter");
+                    grassMovement();
 
                 default:
                     p1.sotto();
