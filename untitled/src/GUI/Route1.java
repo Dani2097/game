@@ -71,12 +71,12 @@ levelR1[2]=3;
         for (int i = 0; i < misura; i++) {
             for (int j = 0; j < misura; j++) {
 
-                tileset[i][j].paintID(g);
+               tileset[i][j].paintID(g);
 
             }
         }
 
-      for (int i = 0; i < frame.width / 20; i++) g.drawLine(0, 20 * i, frame.width, 20 * i);
+   for (int i = 0; i < frame.width / 20; i++) g.drawLine(0, 20 * i, frame.width, 20 * i);
 
      for (int i = 0; i < frame.width / 20; i++) g.drawLine(20 * i, 0, 20 * i, frame.height);
 
