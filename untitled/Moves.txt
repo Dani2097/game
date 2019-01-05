@@ -1,0 +1,31 @@
+nameLenght 5
+nome Pound
+tipo 0
+potenza 120
+precisione 100
+priorita 0
+effettoSecondario 0 0 0 0 0
+-----------------------
+nameLenght 6
+nome Absorb
+tipo 1
+potenza 030
+precisione 100
+priorita 0
+effettoSecondario 0 0 0 0 0
+----------------------
+nameLenght 4
+nome Acid
+tipo 2
+potenza 040
+precisione 100
+priorita 0
+effettoSecondario 0 0 0 0 0
+----------------------
+nameLenght 9
+nome Megadrain
+tipo 1
+potenza 050
+precisione 100
+priorita 0
+effettoSecondario 0 0 0 0 0

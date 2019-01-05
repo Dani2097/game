@@ -4,7 +4,7 @@ name Bulbasaur
 captureRate 45
 experienceGrowth 100
 type 0
-moveset 1 2 3 4 56 78
+moveset 1 2 3 0 56 78
 sprite 0
 baseStats 45 49 49 65 65 45
 -----------------------------
@@ -14,7 +14,7 @@ name Rattata
 captureRate 255
 experienceGrowth 100
 type 1
-moveset 1 2 3 4
+moveset 0 1 2 3
 sprite 1
 baseStats 30 56 35 25 35 72
 -----------------------------
@@ -24,6 +24,6 @@ name Weedle
 captureRate 255
 experienceGrowth 100
 type 2
-moveset 1 2 3 4
+moveset 1 2 3 0
 sprite 2
 baseStats 40 35 30 20 20 50

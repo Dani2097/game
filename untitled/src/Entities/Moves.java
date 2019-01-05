@@ -1,6 +1,11 @@
 package Entities;
 
 public class Moves {
-    int power,id,side;
-    String name;
-}
+    public int power,id,accuracy,side,priority,type;
+    public String name,typeName;
+    public void Moves(){
+        switch (type){
+
+        }
+
+    }}
